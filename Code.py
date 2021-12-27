@@ -6,8 +6,8 @@ import math
 import numpy as np
 import pandas as pd
 
-N_CLUSTERS = 2
-MIN_DIST = 50
+N_CLUSTERS = 7
+MIN_DIST = 1
 BATCH_SIZE = 100
 x = np.array(pd.read_csv('data.csv'))
 DATA_SIZE = len(x)
@@ -63,11 +63,11 @@ if not is_close(batch_centers) and is_enough(batch_centers, batch_aggl.labels_, 
 else:
     aggl = AgglomerativeClustering(n_clusters =N_CLUSTERS, linkage="single").fit(x)
     labels = aggl.labels_
-"""
-colors = ['red', 'magenta', 'yellow', 'orange', 'blue', 'white', 'brown']
+
+colors = ['red', 'magenta', 'yellow', 'orange', 'blue', 'green', 'brown']
 for i in range(DATA_SIZE):
     plt.scatter(x[i][0], x[i][1], c=colors[labels[i]])
 
 for i in range(N_CLUSTERS):
-    plt.scatter(centers[i][0], centers[i][1], c=colors[i], edgecolors='black')
-plt.show()"""
+    plt.scatter(centers[i][0], centers[i][1], c='white', edgecolors='black')
+plt.show()
